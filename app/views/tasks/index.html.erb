@@ -1,1 +1,13 @@
-<h1>List</h1>
+<h1>My Tasks</h1>
+<ul>
+  <%@tasks.each do |task| %>
+    <li>
+      <input type="checkbox" name="vehicle3" value="Boat" disabled <%= 'checked' if task.completed %>>
+      <%= link_to task.title ,task_path(task) %>
+      <%= link_to raw('. <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>'), task_path(task), method: :delete , data: { confirm: "Delete #{task.title}?" } %>
+    </li>
+  <% end %>
+</ul>
+<hr>
+<%= link_to raw('<span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Add a new task'), task_new_path %>
+
